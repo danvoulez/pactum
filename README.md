@@ -121,5 +121,5 @@ These codes are embedded in error messages (both human-readable text and stable 
 
 ## Specification
 
-See `Here's a canonical JSON + hashing + sign.md` for the complete specification.
+See [SPECIFICATION.md](SPECIFICATION.md) for the complete protocol specification (V0.2).
 
