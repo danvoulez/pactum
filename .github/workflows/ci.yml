@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  rust:
+    name: Rust Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Format check
+        run: cargo fmt --check
+      - name: Lint
+        run: cargo clippy -- -D warnings
+      - name: Build
+        run: cargo build --release
+      - name: Generate fixtures
+        run: |
+          cargo run --bin gen_fixtures
+          cargo run --bin gen_fixtures_case2
+          cargo run --bin gen_fixtures_case3
+          cargo run --bin gen_fixtures_case4_quorum_not_met
+          cargo run --bin gen_fixtures_case5_duplicate_signer
+          cargo run --bin gen_fixtures_case6_seq_skip
+          cargo run --bin gen_fixtures_case7
+          cargo run --bin gen_fixtures_case8_seq_gap
+          cargo run --bin gen_fixtures_case9_quorum_partial_then_next
+          cargo run --bin gen_fixtures_case10_seq_replay
+          cargo run --bin gen_fixtures_case11_metric_gap
+      - name: Test
+        run: cargo test --all
+
+  typescript:
+    name: TypeScript Conformance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        working-directory: ts
+        run: npm ci
+      - name: Run golden tests
+        working-directory: ts
+        run: |
+          npm run golden
+          npm run golden:case2
+          npm run golden:case3
+          npm run golden:case7
+      - name: Run negative tests
+        working-directory: ts
+        run: |
+          npm run fail:case4
+          npm run fail:case5
+          npm run fail:case6
+          npm run fail:case8
+          npm run fail:case9
+          npm run fail:case10
+          npm run fail:case11
