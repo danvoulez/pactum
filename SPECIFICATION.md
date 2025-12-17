@@ -1,10 +1,8 @@
-SPECIFICATION.md 
+# Pactum RiskPact Protocol Specification (V0.2)
 
-Pactum RiskPact V0.2, com quorum, multi-round por envelope, invariantes e hardening oracle_id == signer_pub). 
+Pactum RiskPact V0.2, com quorum, multi-round por envelope, invariantes e hardening oracle_id == signer_pub.
 
 ⸻
-
-Pactum — RiskPact Protocol Specification (V0.2)
 
 Status: Stable (conformance-gated)
 Protocol Family: Pactum
