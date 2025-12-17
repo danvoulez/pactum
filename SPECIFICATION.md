@@ -157,6 +157,7 @@ Erros devem incluir token estável: PCT_ERR_SIG_INVALID.
 
 {
   "v": "pactum-ir/0",
+  "runtime": "pactum-riskpact/0.2",
   "type": "risk_pact",
   "time": { "unit": "ms_epoch" },
   "hash": { "alg": "sha256" },
@@ -186,6 +187,14 @@ Erros devem incluir token estável: PCT_ERR_SIG_INVALID.
     }
   }
 }
+
+**Campos obrigatórios:**
+- `v`: versão do formato IR (atualmente "pactum-ir/0")
+- `runtime`: versão do runtime do protocolo (ex: "pactum-riskpact/0.2")
+- `type`: tipo de pact (ex: "risk_pact")
+- `parties`: chaves públicas das partes
+- `terms`: termos do contrato
+- `oracles`: configuração dos oráculos (clock e metric)
 
 7.2 pact_hash
 
@@ -291,14 +300,21 @@ Regras:
 
 Phase D — Commit de rounds de metric (loop multi-round)
 
-Mesma lógica do clock, com effective_v (e effective_t), e a cada commit roda breach/trigger:
-	•	Se effective_v < threshold_z:
-	•	se breach_start_time é null → set breach_start_time = state.now
-	•	Se effective_v >= threshold_z:
-	•	set breach_start_time = null e triggered = false (ou manter triggered como sticky, conforme sua implementação atual; o protocolo deve fixar essa escolha)
-	•	triggered = (breach_start_time != null) && (now - breach_start_time >= duration_d)
+Mesma lógica estrutural do Phase C (loop sequencial, gap detection, quorum, mediana), com as seguintes diferenças:
 
-Append trace: commit_metric_quorum(...) incluindo campos de breach/trigger conforme implementado.
+**Específico de metric:**
+- Computa `effective_v` (mediana de `v`) e `effective_t` (mediana de `t`)
+- Valida `payload.metric_id == terms.metric_id` para cada round
+- **A cada commit, atualiza breach/trigger:**
+  - Se `effective_v < threshold_z`:
+    - Se `breach_start_time == null` → `breach_start_time = now`
+    - Mantém `breach_start_time` se já estava setado
+  - Se `effective_v >= threshold_z`:
+    - `breach_start_time = null`
+    - `triggered = false` (reset explícito)
+  - `triggered = (breach_start_time != null) && (now - breach_start_time >= duration_d)`
+
+Append trace: `commit_metric_quorum(seq, participants_sorted, effective_v, effective_t, count, quorum, breach_status, breach_start_time, triggered)`
 
 Phase E — Aplicar claim_request (ordem do envelope)
 
@@ -392,16 +408,20 @@ O protocolo é considerado conforme quando:
 ⸻
 
 18. Apêndice: Tags normativas
-	•	hash_json tags:
-	•	pactum:pact:0
-	•	pactum:state:0
-	•	pactum:envelope:0
-	•	pactum:event:0
-	•	pactum:outputs:0
-	•	pactum:trace:0
-	•	pactum:receipt:0 (opcional)
-	•	sig tag:
-	•	pactum:sig:event:0
+
+**hash_json tags (domain separation):**
+- `pactum:pact:0` — Hash do Pact IR
+- `pactum:state:0` — Hash do State
+- `pactum:envelope:0` — Hash do Envelope
+- `pactum:event:0` — Hash do Event body (sem sig)
+- `pactum:outputs:0` — Hash dos Outputs
+- `pactum:trace:0` — Hash do Trace
+- `pactum:receipt:0` — Hash do Receipt (opcional, não-recursivo)
+
+**sig tag (mensagem assinada):**
+- `pactum:sig:event:0` — Prefixo para mensagem de assinatura de eventos
+
+**Formato:** `tag || 0x00 || payload_bytes` onde `0x00` é um separador literal de 1 byte.
 
 ⸻
 
