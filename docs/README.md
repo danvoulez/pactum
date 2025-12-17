@@ -1,8 +1,15 @@
 # Documentation
 
-This directory contains notes and specifications from the development of Pactum RiskPact V0.2.
+This directory contains documentation for Pactum RiskPact V0.2.
 
-## Files
+## Core Documentation
+
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Architecture analysis, design decisions, and V0.1→V0.2 evolution
+- See [../SPECIFICATION.md](../SPECIFICATION.md) for the complete protocol specification
+
+## Development Notes
+
+Historical notes from protocol development (for reference):
 
 - `00-spec-v0.md` - Initial specification for canonical JSON, hashing, and signing
 - `01-v0.1-hardening.md` - V0.1 hardening notes (error codes, documentation)
