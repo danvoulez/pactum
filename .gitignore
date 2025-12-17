@@ -32,3 +32,13 @@ Thumbs.db
 # Test artifacts (keep fixtures, ignore generated)
 *.profdata
 
+# Conversation notes (moved to docs/ or kept locally)
+Awesome*.rs
+Excelente*.md
+Hell*.md
+Here*.md
+Perfeito.md
+Sweet*.rs
+This*.md
+YES*.rs
+
