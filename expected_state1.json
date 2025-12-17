@@ -1,2 +1,0 @@
-{"breach_start_time":"1734390000000","claim_paid":"10","collateral_posted":"1000","metric_last":{"t":"1734390061200","v":"95"},"now":"1734390061000","oracle_seq":{"oracle:clock1":"2","oracle:metric1":"2"},"oracle_time":{"oracle:clock1":"1734390061000","oracle:metric1":"1734390061200"},"pact_hash":"sha256:4fea6a09db7534bfe8c208a6ef32984bec6ac5e5af5b9daedc6ce17bca03f835","triggered":true,"v":"pactum-state/0"}
-
