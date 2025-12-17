@@ -5,6 +5,7 @@ This directory contains documentation for Pactum RiskPact V0.2.
 ## Core Documentation
 
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - Architecture analysis, design decisions, and V0.1→V0.2 evolution
+- **[USE_CASES.md](USE_CASES.md)** - Real-world problems solved by UBL-TDLN-Pactum stack
 - See [../SPECIFICATION.md](../SPECIFICATION.md) for the complete protocol specification
 
 ## Development Notes

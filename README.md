@@ -123,4 +123,5 @@ These codes are embedded in error messages (both human-readable text and stable 
 
 - **[SPECIFICATION.md](SPECIFICATION.md)** - Complete protocol specification (V0.2)
 - **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Architecture analysis, design decisions, and V0.1→V0.2 evolution
+- **[docs/USE_CASES.md](docs/USE_CASES.md)** - Real-world problems solved by the UBL-TDLN-Pactum stack
 
