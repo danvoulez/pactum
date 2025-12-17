@@ -1,7 +1,8 @@
 # Rust
 /target/
 **/*.rs.bk
-Cargo.lock
+# Cargo.lock - keep for applications, remove for libraries
+# Cargo.lock
 
 # Node
 node_modules/
