@@ -119,7 +119,8 @@ Pactum V0.2 uses stable error codes for reliable error detection. Negative test 
 
 These codes are embedded in error messages (both human-readable text and stable token), allowing tests to match on the stable substring while error formatting can evolve.
 
-## Specification
+## Documentation
 
-See [SPECIFICATION.md](SPECIFICATION.md) for the complete protocol specification (V0.2).
+- **[SPECIFICATION.md](SPECIFICATION.md)** - Complete protocol specification (V0.2)
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Architecture analysis, design decisions, and V0.1→V0.2 evolution
 
