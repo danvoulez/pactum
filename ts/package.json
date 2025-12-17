@@ -1,0 +1,27 @@
+{
+  "name": "pactum-ts-conformance",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "golden": "tsx src/golden.ts ../tests/fixtures",
+    "golden:case2": "tsx src/golden.ts ../tests/fixtures_case2",
+    "golden:case3": "tsx src/golden.ts ../tests/fixtures_case3",
+    "golden:case7": "tsx src/golden.ts ../tests/fixtures_case7",
+    "fail:case4": "tsx src/expect_fail.ts ../tests/fixtures_case4",
+    "fail:case5": "tsx src/expect_fail.ts ../tests/fixtures_case5",
+    "fail:case6": "tsx src/expect_fail.ts ../tests/fixtures_case6",
+    "fail:case8": "tsx src/expect_fail.ts ../tests/fixtures_case8",
+    "fail:case9": "tsx src/expect_fail.ts ../tests/fixtures_case9",
+    "fail:case10": "tsx src/expect_fail.ts ../tests/fixtures_case10",
+    "fail:case11": "tsx src/expect_fail.ts ../tests/fixtures_case11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  }
+}
+

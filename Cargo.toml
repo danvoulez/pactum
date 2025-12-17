@@ -1,0 +1,61 @@
+[package]
+name = "pactum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+ed25519-dalek = { version = "2.1", features = ["rand_core"] }
+base64 = "0.21"
+hex = "0.4"
+thiserror = "1.0"
+
+[dev-dependencies]
+pretty_assertions = "1.4"
+
+[[bin]]
+name = "gen_fixtures"
+path = "src/bin/gen_fixtures.rs"
+
+[[bin]]
+name = "gen_fixtures_case2"
+path = "src/bin/gen_fixtures_case2.rs"
+
+[[bin]]
+name = "gen_fixtures_case3"
+path = "src/bin/gen_fixtures_case3.rs"
+
+[[bin]]
+name = "gen_fixtures_case4_quorum_not_met"
+path = "src/bin/gen_fixtures_case4_quorum_not_met.rs"
+
+[[bin]]
+name = "gen_fixtures_case5_duplicate_signer"
+path = "src/bin/gen_fixtures_case5_duplicate_signer.rs"
+
+[[bin]]
+name = "gen_fixtures_case6_seq_skip"
+path = "src/bin/gen_fixtures_case6_seq_skip.rs"
+
+[[bin]]
+name = "gen_fixtures_case7"
+path = "src/bin/gen_fixtures_case7.rs"
+
+[[bin]]
+name = "gen_fixtures_case8_seq_gap"
+path = "src/bin/gen_fixtures_case8_seq_gap.rs"
+
+[[bin]]
+name = "gen_fixtures_case9_quorum_partial_then_next"
+path = "src/bin/gen_fixtures_case9_quorum_partial_then_next.rs"
+
+[[bin]]
+name = "gen_fixtures_case10_seq_replay"
+path = "src/bin/gen_fixtures_case10_seq_replay.rs"
+
+[[bin]]
+name = "gen_fixtures_case11_metric_gap"
+path = "src/bin/gen_fixtures_case11_metric_gap.rs"
+

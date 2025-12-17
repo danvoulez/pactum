@@ -1,0 +1,1 @@
+/Users/voulezvous/pactum/target/debug/libpactum.rlib: /Users/voulezvous/pactum/src/canon.rs /Users/voulezvous/pactum/src/hash.rs /Users/voulezvous/pactum/src/lib.rs /Users/voulezvous/pactum/src/pactum.rs
